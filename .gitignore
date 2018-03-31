@@ -21,4 +21,4 @@ erl_crash.dump
 
 # Ignore package tarball (built via "mix hex.build").
 slack_file_cleaner-*.tar
-
+/slack_file_cleaner
