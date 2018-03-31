@@ -14,6 +14,7 @@ defmodule SlackFileCleaner do
   end
 
   defp target_file_ids(options) do
+    # fetch for the max page number at first for recursive process
     get_max_page(options)
     |> list_file_ids(options, [])
   end
@@ -23,6 +24,8 @@ defmodule SlackFileCleaner do
     |> json_paging_max
   end
 
+  # recursive processing from the last page to the first
+  # counting down from the last page makes easy to handle the final process
   defp list_file_ids(0, _, ids), do: ids
   defp list_file_ids(page, options, ids) do
     IO.puts("retriving page: #{page}")
